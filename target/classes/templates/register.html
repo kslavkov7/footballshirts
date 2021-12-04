@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/fragment::head"></head>
+
+<body>
+    <nav th:replace="fragments/fragment::navigation"></nav>
+
+    <section class="vh-100 bg-image"
+        style="background-image: url('https://media.gq-magazine.co.uk/photos/5d138eeed7a701b1d8bb9f09/16:9/w_2580,c_limit/world-cup-kits-hp-gq-6june18_getty_b.jpg');">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                                <form th:action="@{/users/register}" method="post" th:object="${userModel}">
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" th:field="*{fullName}" id="fullName" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                        <label class="form-label" for="fullName">Full Name</label>
+                                        <p class="invalid-feedback errors alert alert-danger">
+                                            Full name is required and should be between 4 and 20 symbols.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="username" th:field="*{username}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                        <label class="form-label" for="username">Username</label>
+                                        <p class="invalid-feedback errors alert alert-danger">
+                                            Username is required and should be between 4 and 20 symbols.
+                                        </p>
+                                    </div>
+
+
+                                    <div class="form-outline mb-4">
+                                        <input type="email" id="email" th:field="*{email}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                        <label class="form-label" for="email">Email</label>
+                                        <p class="invalid-feedback errors alert alert-danger">
+                                            Email is required.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="password" th:errorclass="is-invalid"
+                                            class="form-control form-control-lg" th:field="*{password}"/>
+                                        <label class="form-label" for="password">Password</label>
+                                        <p class="invalid-feedback errors alert alert-danger">
+                                            Password is required and must be between 4 and 20 symbols.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="passwordConfirm" th:errorclass="is-invalid"
+                                            class="form-control form-control-lg" th:field="*{confirmPassword}"/>
+                                        <label class="form-label" for="passwordConfirm">Repeat your password</label>
+                                        <p class="invalid-feedback errors alert alert-danger">
+                                            Password confirmation is required and must be between 4 and 20 symbols.
+                                        </p>
+
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                    </div>
+
+                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/users/login"
+                                            class="fw-bold text-body"><u>Login here</u></a></p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+<!-- Footer -->
+<footer th:replace="fragments/fragment::footer"></footer>
+<!-- Footer -->
+
+</html>

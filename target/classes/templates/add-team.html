@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment::head"></head>
+<body>
+
+<nav th:replace="fragments/fragment::navigation" ></nav>
+
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black bg-light">
+
+
+
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+          <form style="width: 23rem;" th:action="@{/teams/add}" method="post" th:object="${teamModel}">
+
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Add team</h3>
+
+            <div class="form-outline mb-4">
+              <input type="text" th:field = "*{name}" id="name" th:errorclass="is-invalid" class="form-control form-control-lg" />
+              <label class="form-label" for="name">Team name</label>
+              <p class="invalid-feedback errors alert alert-danger">
+                Team name is required and should be between 3 and 30 symbols.
+              </p>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" th:field = "*{country}" id="country" th:errorclass="is-invalid" name="country" class="form-control form-control-lg" />
+              <label class="form-label" for="country">Country</label>
+              <p class="invalid-feedback errors alert alert-danger">
+                 Team country is required.
+              </p>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="date" th:field = "*{founded}" id="founded" th:errorclass="is-invalid" name="founded" class="form-control form-control-lg" />
+              <label class="form-label" for="founded">Founded</label>
+              <p class="invalid-feedback errors alert alert-danger">
+                 Date of foundation is required and cannot be in the future.
+              </p>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" th:field = "*{description}" id="description" th:errorclass="is-invalid" name="description" class="form-control form-control-lg" />
+              <label class="form-label" for="description">Description</label>
+              <p class="invalid-feedback errors alert alert-danger">
+                Description of the team is required.
+              </p>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" th:field = "*{logoUrl}" id="logoUrl" th:errorclass="is-invalid" name="logoUrl" class="form-control form-control-lg" />
+              <label class="form-label" for="logoUrl">LogoURL</label>
+              <p class="invalid-feedback errors alert alert-danger">
+                URL for team logo is required.
+              </p>
+            </div>
+
+            <div class="pt-1 mb-4">
+              <button class="btn btn-success btn-lg btn-block" type="submit">Add team</button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="https://thumbs.dreamstime.com/z/kiev-ukraine-september-european-football-clubs-logo-printed-paper-european-football-clubs-logo-125423434.jpg"
+             alt="Team add image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+</body>
+
+<footer th:replace="fragments/fragment::footer"></footer>
+
+</html>
