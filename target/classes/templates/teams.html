@@ -7,7 +7,7 @@
 <nav th:replace="fragments/fragment::navigation"></nav>
 
 <div class="container-fluid">
-  <h2 class="text-center text-black mt-5">All Teams</h2>
+  <h2 class="text-center text-black mt-5">Teams</h2>
   <div class="offers row mx-auto d-flex flex-row justify-content-center">
     <div th:each="t : ${teams}" th:object="${t}" class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
       <div class="card-img-top-wrapper">
@@ -24,7 +24,7 @@
         </li>
       </ul>
       <div class="card-body">
-        <a class="card-link" th:href="@{/teams/{id}/details(id=*{id})}">More info</a>
+        <a class="btn btn-primary" th:href="@{/teams/{id}/details(id=*{id})}">More info</a>
       </div>
     </div>
   </div>

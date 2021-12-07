@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment::head"></head>
+<body>
+
+<nav th:replace="fragments/fragment::navigation" ></nav>
+
+<div class="d-md-flex h-md-100 align-items-center">
+
+    <!-- First Half -->
+    <div class="col-md-6 p-0 bg-indigo h-md-100">
+        <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+            <div class="pt-5 pb-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="http://static1.squarespace.com/static/50c9c50fe4b0a97682fac903/50fea65de4b03aa4e2bb7830/5a583a3c0d9297c266b7eae4/1609198807583/Depositphotos_74579135_m-2015.jpg?format=1500w" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title ">Manage roles</h5>
+                        <p class="card-text">Click here in order to demote or promote any of our users.</p>
+                        <a href="/admin/manage" class="btn btn-primary">Manage roles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Half -->
+    <div class="col-md-6 p-0 bg-white h-md-100">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+            <div class="col-md-6 p-0 bg-indigo h-md-100">
+                <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+                    <div class="pt-5 pb-5">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://pbs.twimg.com/media/DfZvQtRX0AAPULG?format=jpg&name=large" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Purchases</h5>
+                                <p class="card-text">Click to see latest purchases by our clients.</p>
+                                <a href="/admin/purchases" class="btn btn-primary">Purchases</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+<footer th:replace="fragments/fragment::footer"></footer>
+
+</html>
