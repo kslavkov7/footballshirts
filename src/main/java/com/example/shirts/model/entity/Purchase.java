@@ -13,6 +13,7 @@ public class Purchase extends BaseEntity {
     private String productName;
     private BigDecimal price;
     private LocalDateTime timeOfProductPurchase;
+    private String photoUrl;
     private User buyer;
 
     public Purchase() {
@@ -43,6 +44,15 @@ public class Purchase extends BaseEntity {
 
     public void setTimeOfProductPurchase(LocalDateTime timeOfProductPurchase) {
         this.timeOfProductPurchase = timeOfProductPurchase;
+    }
+
+    @Column(nullable = false)
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     @ManyToOne

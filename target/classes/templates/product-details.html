@@ -7,10 +7,9 @@
 <nav th:replace="fragments/fragment::navigation"></nav>
 
 <div class="container-fluid">
-    <h2 class="text-center text-white mt-5">Details</h2>
-    <div class="offers row mx-auto d-flex flex-row justify-content-center">
+    <div class="product row mx-auto d-flex flex-row justify-content-center">
         <div th:object="${product}"
-             class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0" style="justify-content: space-evenly;
+             class="product card col-sm-2 col-md-3  col-lg-4 m-1 p-0" style="justify-content: space-evenly;
     align-items: stretch;">
 
             <div class="card-body pb-1" style="display: contents; text-align: center">
@@ -40,7 +39,7 @@
                 </div>
         </div>
         <div th:object="${product}"
-             class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
+             class="product card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
             <img class="card-img-top" th:src="*{getPhotoUrl()}" alt="Product image">
         </div>
     </div>

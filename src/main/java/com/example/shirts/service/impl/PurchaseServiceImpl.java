@@ -33,6 +33,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     private PurchaseView map(Purchase purchase) {
         PurchaseView purchaseView = this.modelMapper
                 .map(purchase, PurchaseView.class);
+        purchaseView.setBuyerName(purchase.getBuyer().getFullName());
         return purchaseView;
     }
 

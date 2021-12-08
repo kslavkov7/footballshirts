@@ -4,9 +4,11 @@ import com.example.shirts.model.entity.User;
 import com.example.shirts.model.entity.UserRole;
 import com.example.shirts.model.entity.UserRoleEnum;
 import com.example.shirts.model.service.UserRegisterServiceModel;
+import com.example.shirts.model.view.UserView;
 import com.example.shirts.repository.UserRepository;
 import com.example.shirts.repository.UserRoleRepository;
 import com.example.shirts.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,20 +18,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
-    private final UserRoleRepository userRoleRepository;
-    private final ShirtsUserServiceImpl shirtsUserService;
+    private PasswordEncoder passwordEncoder;
+    private UserRepository userRepository;
+    private UserRoleRepository userRoleRepository;
+    private ShirtsUserServiceImpl shirtsUserService;
+    private ModelMapper modelMapper;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, UserRoleRepository userRoleRepository, ShirtsUserServiceImpl shirtsUserService) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, UserRoleRepository userRoleRepository, ShirtsUserServiceImpl shirtsUserService, ModelMapper modelMapper) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.shirtsUserService = shirtsUserService;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -76,6 +81,28 @@ public class UserServiceImpl implements UserService {
         }
         return userRepository.findByUsername(username).orElse(null);
 
+    }
+
+    @Override
+    public List<UserView> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .filter(user -> !user.getRoles().contains(UserRoleEnum.ADMIN))
+                .map(this::map)
+                .collect(Collectors.toList());
+    }
+
+    private UserView map(User user) {
+        UserView userView = this.modelMapper
+                .map(user, UserView.class);
+        if (user.getRoles().contains("MODERATOR")){
+            userView.setRole("MODERATOR");
+            userView.setCanDemote(true);
+        } else {
+            userView.setRole("USER");
+            userView.setCanPromote(true);
+        }
+        return userView;
     }
 
 

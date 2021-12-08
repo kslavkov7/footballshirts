@@ -10,7 +10,8 @@ public class PurchaseView {
     private String productName;
     private BigDecimal price;
     private LocalDateTime timeOfProductPurchase;
-    private User buyer;
+    private String buyerName;
+    private String photoUrl;
 
     public Long getId() {
         return id;
@@ -44,11 +45,19 @@ public class PurchaseView {
         this.timeOfProductPurchase = timeOfProductPurchase;
     }
 
-    public User getBuyer() {
-        return buyer;
+    public String getBuyerName() {
+        return buyerName;
     }
 
-    public void setBuyer(User buyer) {
-        this.buyer = buyer;
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

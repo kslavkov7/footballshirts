@@ -7,16 +7,16 @@
 <nav th:replace="fragments/fragment::navigation"></nav>
 
 <div class="container-fluid" th:object="${team}">
-    <h2 class="text-center text-white mt-5">Details</h2>
-    <div class="offers row mx-auto d-flex flex-row justify-content-center">
+    <div class="team row mx-auto d-flex flex-row justify-content-center">
         <div
-             class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
+             class="team card col-sm-2 col-md-3  col-lg-4 m-1 p-0" style="justify-content: space-evenly;
+    align-items: stretch;">
 
-            <div class="card-body pb-1">
+            <div class="card-body pb-1" style="display: contents; text-align: center">
                 <h5 class="card-title" th:text="*{name}">
                     Team name</h5>
             </div>
-            <ul class="offer-details list-group list-group-flush">
+            <ul class="team-details list-group list-group-flush">
                 <li class="list-group-item">
                     <div class="card-text"><span th:text="|Country: *{country}|">• Country</span></div>
                     <div class="card-text"><span th:text="|Founded: *{founded}|">• Founded</span></div>
@@ -30,7 +30,7 @@
         </div>
 
         <div th:object="${team}"
-             class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
+             class="team card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
             <img class="card-img-top" th:src="*{getLogoUrl()}" alt="Team logo image">
         </div>
 

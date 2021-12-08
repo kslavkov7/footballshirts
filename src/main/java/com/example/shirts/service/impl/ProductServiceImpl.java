@@ -71,10 +71,12 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.findById(id).orElseThrow();
         String productName = product.getName();
         BigDecimal price = product.getPrice();
+        String photoUrl = product.getPhotoUrl();
         Purchase purchase = new Purchase();
         purchase.setProductName(productName);
         purchase.setPrice(price);
         purchase.setTimeOfProductPurchase(LocalDateTime.now());
+        purchase.setPhotoUrl(photoUrl);
         User buyer = userService.findLoggedInUser();
         purchase.setBuyer(buyer);
         purchaseRepository.save(purchase);
