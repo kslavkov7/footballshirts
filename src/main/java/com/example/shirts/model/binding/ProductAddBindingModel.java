@@ -5,6 +5,7 @@ import com.example.shirts.model.entity.ProductTypeEnum;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class ProductAddBindingModel {
@@ -21,6 +22,7 @@ public class ProductAddBindingModel {
     }
 
     @NotNull
+    @Size(min = 3, max = 30)
     public String getName() {
         return name;
     }
@@ -30,6 +32,7 @@ public class ProductAddBindingModel {
     }
 
     @NotNull
+    @Size(min = 1)
     public String getSize() {
         return size;
     }
@@ -49,6 +52,7 @@ public class ProductAddBindingModel {
     }
 
     @NotNull
+    @Size(min = 5)
     public String getDescription() {
         return description;
     }
@@ -58,6 +62,7 @@ public class ProductAddBindingModel {
     }
 
     @NotNull
+    @Size(min = 3)
     public String getTeamName() {
         return teamName;
     }
@@ -85,6 +90,7 @@ public class ProductAddBindingModel {
     }
 
     @NotNull
+    @Size(min = 1)
     public String getPhotoUrl() {
         return photoUrl;
     }

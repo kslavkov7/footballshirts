@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
     public List<UserView> getAllUsers() {
         return userRepository.findAll()
                 .stream()
-                .filter(user -> !user.getRoles().contains(userRoleService.findRoleById(1L)))
+                .filter(user -> user.getRoles().stream().filter(role -> role.getRole() == UserRoleEnum.ADMIN).count() == 0)
                 .map(this::map)
                 .collect(Collectors.toList());
     }
@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
     private UserView map(User user) {
         UserView userView = this.modelMapper
                 .map(user, UserView.class);
-        if (user.getRoles().contains(userRoleService.findRoleById(2L))){
+        if (user.getRoles().stream().filter(role -> role.getRole() == UserRoleEnum.MODERATOR).count() != 0){
             userView.setRole("MODERATOR");
             userView.setCanDemote(true);
         } else {

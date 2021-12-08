@@ -28,6 +28,7 @@ public class TeamAddBindingModel {
     }
 
     @NotNull
+    @Size(min=3)
     public String getCountry() {
         return country;
     }
@@ -48,6 +49,7 @@ public class TeamAddBindingModel {
     }
 
     @NotNull
+    @Size(min = 10)
     public String getDescription() {
         return description;
     }
@@ -57,6 +59,7 @@ public class TeamAddBindingModel {
     }
 
     @NotNull
+    @Size(min = 1)
     public String getLogoUrl() {
         return logoUrl;
     }
