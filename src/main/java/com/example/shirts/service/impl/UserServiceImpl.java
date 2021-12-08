@@ -7,6 +7,7 @@ import com.example.shirts.model.service.UserRegisterServiceModel;
 import com.example.shirts.model.view.UserView;
 import com.example.shirts.repository.UserRepository;
 import com.example.shirts.repository.UserRoleRepository;
+import com.example.shirts.service.UserRoleService;
 import com.example.shirts.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,13 +29,15 @@ public class UserServiceImpl implements UserService {
     private UserRoleRepository userRoleRepository;
     private ShirtsUserServiceImpl shirtsUserService;
     private ModelMapper modelMapper;
+    private UserRoleService userRoleService;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, UserRoleRepository userRoleRepository, ShirtsUserServiceImpl shirtsUserService, ModelMapper modelMapper) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, UserRoleRepository userRoleRepository, ShirtsUserServiceImpl shirtsUserService, ModelMapper modelMapper, UserRoleService userRoleService) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.shirtsUserService = shirtsUserService;
         this.modelMapper = modelMapper;
+        this.userRoleService = userRoleService;
     }
 
 
@@ -87,7 +90,7 @@ public class UserServiceImpl implements UserService {
     public List<UserView> getAllUsers() {
         return userRepository.findAll()
                 .stream()
-                .filter(user -> !user.getRoles().contains(UserRoleEnum.ADMIN))
+                .filter(user -> !user.getRoles().contains(userRoleRepository.findByRole(UserRoleEnum.ADMIN)))
                 .map(this::map)
                 .collect(Collectors.toList());
     }
@@ -95,7 +98,7 @@ public class UserServiceImpl implements UserService {
     private UserView map(User user) {
         UserView userView = this.modelMapper
                 .map(user, UserView.class);
-        if (user.getRoles().contains("MODERATOR")){
+        if (user.getRoles().contains(userRoleRepository.findByRole(UserRoleEnum.MODERATOR))){
             userView.setRole("MODERATOR");
             userView.setCanDemote(true);
         } else {
