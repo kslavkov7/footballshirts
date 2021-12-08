@@ -15,7 +15,7 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
-    public UserRole findRoleById(long l) {
-        return userRoleRepository.findById(l).orElseThrow();
+    public UserRole findRoleById(long id) {
+        return userRoleRepository.findById(id).orElseThrow();
     }
 }
