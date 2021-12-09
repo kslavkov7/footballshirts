@@ -95,6 +95,20 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void promoteUser(Long id) {
+       User toBePromoted =  userRepository.findById(id).orElseThrow();
+       toBePromoted.getRoles().add(userRoleRepository.findByRole(UserRoleEnum.MODERATOR));
+       userRepository.save(toBePromoted);
+    }
+
+    @Override
+    public void demoteUser(Long id) {
+        User toBeDemoted = userRepository.findById(id).orElseThrow();
+        toBeDemoted.setRoles(Set.of(userRoleRepository.findByRole(UserRoleEnum.USER)));
+        userRepository.save(toBeDemoted);
+    }
+
     private UserView map(User user) {
         UserView userView = this.modelMapper
                 .map(user, UserView.class);

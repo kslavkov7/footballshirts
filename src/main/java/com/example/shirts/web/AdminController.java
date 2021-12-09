@@ -5,6 +5,8 @@ import com.example.shirts.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class AdminController {
@@ -33,5 +35,17 @@ public class AdminController {
     private String manageRoles(Model model){
         model.addAttribute("users", this.userService.getAllUsers());
         return "roles";
+    }
+
+    @PatchMapping("/admin/manage/{id}/promote")
+    private String promoteUser(@PathVariable Long id){
+        userService.promoteUser(id);
+        return "redirect:/admin/manage";
+    }
+
+    @PatchMapping("/admin/manage/{id}/demote")
+    private String demoteUser(@PathVariable Long id){
+        userService.demoteUser(id);
+        return "redirect:/admin/manage";
     }
 }

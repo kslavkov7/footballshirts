@@ -19,6 +19,19 @@
                     <div class="card-text"><span th:text="|Role: *{role}|">Role</span></div>
                 </li>
             </ul>
+            <div class="row justify-content-center">
+            <th:block th:if="*{canPromote}">
+                <form th:action="@{/admin/manage/{id}/promote(id=*{id})}" th:method="patch">
+                    <input type="submit" class="btn btn-danger btn-lg" value="Promote"/>
+                </form>
+            </th:block>
+
+            <th:block th:if="*{canDemote}">
+                <form th:action="@{/admin/manage/{id}/demote(id=*{id})}" th:method="patch">
+                    <input type="submit" class="btn btn-danger btn-lg" value="Demote"/>
+                </form>
+            </th:block>
+            </div>
         </div>
     </div>
 </div>

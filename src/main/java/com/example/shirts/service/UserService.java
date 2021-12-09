@@ -14,4 +14,8 @@ public interface UserService {
     User findLoggedInUser();
 
     List<UserView> getAllUsers();
+
+    void promoteUser(Long id);
+
+    void demoteUser(Long id);
 }
