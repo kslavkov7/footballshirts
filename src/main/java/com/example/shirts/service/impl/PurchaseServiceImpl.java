@@ -30,6 +30,11 @@ public class PurchaseServiceImpl implements PurchaseService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteAllPurchases() {
+        purchaseRepository.deleteAll();
+    }
+
     private PurchaseView map(Purchase purchase) {
         PurchaseView purchaseView = this.modelMapper
                 .map(purchase, PurchaseView.class);

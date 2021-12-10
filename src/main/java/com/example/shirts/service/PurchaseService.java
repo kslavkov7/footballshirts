@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PurchaseService {
     List<PurchaseView> getAllPurchases();
+    void deleteAllPurchases();
 }
