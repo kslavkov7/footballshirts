@@ -51,6 +51,8 @@ public class UserServiceImpl implements UserService {
         newUser.setFullName(userRegistrationServiceModel.getFullName());
         newUser.setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword()));
         newUser.setEmail(userRegistrationServiceModel.getEmail());
+        newUser.setPhoneNumber(userRegistrationServiceModel.getPhoneNumber());
+        newUser.setDeliveryAddress(userRegistrationServiceModel.getDeliveryAddress());
         newUser.getRoles().add(userRole);
         newUser = userRepository.save(newUser);
 
@@ -109,6 +111,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(toBeDemoted);
     }
 
+    @Override
+    public boolean isEmpty() {
+        return userRepository.count()==0;
+    }
+
     private UserView map(User user) {
         UserView userView = this.modelMapper
                 .map(user, UserView.class);
@@ -136,6 +143,8 @@ public class UserServiceImpl implements UserService {
             admin.setEmail("admin@admin");
             admin.setFullName("Admin Adminov");
             admin.setRoles(Set.of(adminRole, moderatorRole, userRole));
+            admin.setPhoneNumber("0000000000");
+            admin.setDeliveryAddress("ulica Admin");
             userRepository.save(admin);
 
             User moderator = new User();
@@ -144,6 +153,8 @@ public class UserServiceImpl implements UserService {
             moderator.setEmail("mod@mod");
             moderator.setFullName("Moderator");
             moderator.setRoles(Set.of(moderatorRole, userRole));
+            moderator.setPhoneNumber("1111111111");
+            moderator.setDeliveryAddress("ulitsa Moderator");
             userRepository.save(moderator);
 
             User user = new User();
@@ -152,6 +163,8 @@ public class UserServiceImpl implements UserService {
             user.setEmail("user@user");
             user.setFullName("User Userov");
             user.setRoles(Set.of(userRole));
+            user.setPhoneNumber("2222222222");
+            user.setDeliveryAddress("ulitsa User");
             userRepository.save(user);
 
         }

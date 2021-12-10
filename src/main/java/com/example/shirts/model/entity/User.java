@@ -54,7 +54,7 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
@@ -63,7 +63,7 @@ public class User extends BaseEntity {
         this.deliveryAddress = deliveryAddress;
     }
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     public String getPhoneNumber() {
         return phoneNumber;
     }

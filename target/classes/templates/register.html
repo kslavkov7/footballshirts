@@ -44,6 +44,22 @@
                                     </div>
 
                                     <div class="form-outline mb-4">
+                                        <input type="text" id="phoneNumber" th:field="*{phoneNumber}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                        <label class="form-label" for="phoneNumber">Phone number</label>
+                                        <p class="invalid-feedback errors alert alert-danger">
+                                            Phone number is required and must be at least 6 symbols.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="deliveryAddress" th:field="*{deliveryAddress}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                        <label class="form-label" for="deliveryAddress">Deliver address</label>
+                                        <p class="invalid-feedback errors alert alert-danger">
+                                            Delivery address is required and must be at least 6 symbols.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
                                         <input type="password" id="password" th:errorclass="is-invalid"
                                             class="form-control form-control-lg" th:field="*{password}"/>
                                         <label class="form-label" for="password">Password</label>

@@ -5,12 +5,15 @@ public class UserRegisterServiceModel {
     private String fullName;
     private String password;
     private String email;
+    private String phoneNumber;
+    private String deliveryAddress;
 
     public UserRegisterServiceModel(String email) {
         this.email = email;
     }
 
     public UserRegisterServiceModel() {
+
     }
 
     public String getUsername() {
@@ -46,5 +49,21 @@ public class UserRegisterServiceModel {
     public UserRegisterServiceModel setEmail(String email) {
         this.email = email;
         return this;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
     }
 }

@@ -18,4 +18,6 @@ public interface UserService {
     void promoteUser(Long id);
 
     void demoteUser(Long id);
+
+    boolean isEmpty();
 }

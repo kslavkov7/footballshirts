@@ -12,7 +12,7 @@ public class SchedulingConfiguration {
         this.purchaseService = purchaseService;
     }
 
-    @Scheduled(cron = "30 3 * * *")
+    @Scheduled(cron = "0 30 0 * * *")
     public void deleteAllPurchases(){
         purchaseService.deleteAllPurchases();
     }

@@ -11,6 +11,8 @@ public class UserRegisterBindingModel {
     private String fullName;
     private String username;
     private String email;
+    private String phoneNumber;
+    private String deliveryAddress;
     private String password;
     private String confirmPassword;
 
@@ -40,12 +42,33 @@ public class UserRegisterBindingModel {
 
     @Email
     @NotNull
+    @Size(min=3)
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Size(min=6)
+    @NotNull
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Size(min=6)
+    @NotNull
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
     }
 
     @NotNull
