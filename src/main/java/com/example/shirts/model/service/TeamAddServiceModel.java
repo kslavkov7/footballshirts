@@ -5,7 +5,6 @@ import java.time.LocalDate;
 public class TeamAddServiceModel {
     private String name;
     private String country;
-    private LocalDate founded;
     private String description;
     private String logoUrl;
 
@@ -26,14 +25,6 @@ public class TeamAddServiceModel {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public LocalDate getFounded() {
-        return founded;
-    }
-
-    public void setFounded(LocalDate founded) {
-        this.founded = founded;
     }
 
     public String getDescription() {

@@ -10,7 +10,6 @@ import java.time.LocalDate;
 public class TeamAddBindingModel {
     private String name;
     private String country;
-    private LocalDate founded;
     private String description;
     private String logoUrl;
 
@@ -37,16 +36,6 @@ public class TeamAddBindingModel {
         this.country = country;
     }
 
-    @NotNull
-    @PastOrPresent
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
-    public LocalDate getFounded() {
-        return founded;
-    }
-
-    public void setFounded(LocalDate founded) {
-        this.founded = founded;
-    }
 
     @NotNull
     @Size(min = 10)

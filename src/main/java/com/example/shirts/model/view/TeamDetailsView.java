@@ -7,7 +7,6 @@ public class TeamDetailsView {
     private String name;
     private String country;
     private String logoUrl;
-    private LocalDate founded;
     private String description;
     private boolean canDelete;
 
@@ -41,14 +40,6 @@ public class TeamDetailsView {
 
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
-    }
-
-    public LocalDate getFounded() {
-        return founded;
-    }
-
-    public void setFounded(LocalDate founded) {
-        this.founded = founded;
     }
 
     public String getDescription() {

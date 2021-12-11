@@ -12,7 +12,6 @@ public class TeamSummaryView {
     private String name;
     private String country;
     private String logoUrl;
-    private LocalDate founded;
 
     public Long getId() {
         return id;
@@ -36,14 +35,6 @@ public class TeamSummaryView {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public LocalDate getFounded() {
-        return founded;
-    }
-
-    public void setFounded(LocalDate founded) {
-        this.founded = founded;
     }
 
 
